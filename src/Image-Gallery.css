@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  width: 280px;
+  margin: 7px;
+  cursor: pointer;
+}
+
+.selected-image {
+  width: 700px;
+  height: 100%;
+  cursor: initial;
+}
+
+.image-gallery {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.selected {
+  border: 2px solid green;
+}

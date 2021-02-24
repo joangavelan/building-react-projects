@@ -1,11 +1,11 @@
 import React from 'react'
-import RanNumber from './Get-Random-Number'
+import ImageGallery from './Image-Gallery';
 import './index.css'
 
 function App() {
   return (
     <div className="App">
-      <RanNumber/>
+      <ImageGallery />
     </div>
   );
 }
