@@ -9,6 +9,14 @@ img {
   width: 280px;
   margin: 7px;
   cursor: pointer;
+  border: 3px solid transparent;
+}
+
+.images {
+  max-height: 1000px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .selected-image {
@@ -18,13 +26,12 @@ img {
 }
 
 .image-gallery {
+  width: 1300px;
   display: flex;
   align-items: center;
-  width: max-content;
-  text-align: center;
   margin: 0 auto;
 }
 
 .selected {
-  border: 2px solid green;
+  border: 3px solid green;
 }
