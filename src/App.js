@@ -1,11 +1,11 @@
 import React from 'react'
-import ImageGallery from './Image-Gallery';
+import ColorPallete from './Color-Pallete'
 import './index.css'
 
 function App() {
   return (
     <div className="App">
-      <ImageGallery />
+      <ColorPallete />
     </div>
   );
 }
