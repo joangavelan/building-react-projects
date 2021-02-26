@@ -1,8 +1,12 @@
-function Header(props) {
+function Header({form, toggleForm}) {
   return (
     <header>
       <h1>Task Tracker</h1>
-      <button>Add</button>
+      <button 
+        onClick={toggleForm}
+        style={{backgroundColor: form ? 'black' : 'green'}}>
+        {form ? 'Hide' : 'Add'}
+      </button>
     </header>
   );
 }

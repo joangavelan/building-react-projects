@@ -5,23 +5,24 @@ function Form({addTask}) {
   const [day, setDay] = useState('');
   const [reminder, setReminder] = useState(false);
 
-  const handleTaskInput = (event) => setTask(event.target.value);
-  const handleDayInput = (event) => setDay(event.target.value);
-  const handleReminderInput = (event) => setReminder(event.target.checked);
-
   const getId = () => Math.floor(Math.random() * 10000) + 1;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     //new task
-    const newTask = {
-      id: getId(),
-      desc: task,
-      day: day,
-      reminder: reminder
-    };
-    //add task
-    addTask(newTask);
+    if(task && day) {
+      const newTask = {
+        id: getId(),
+        desc: task,
+        day,
+        reminder
+      };
+      //add task
+      addTask(newTask);
+    } 
+    else {
+      alert('Fill in the fields');
+    }
     //reset
     setTask('');
     setDay('');
@@ -32,15 +33,15 @@ function Form({addTask}) {
     <form onSubmit={handleSubmit}>
       <label>
         Task
-        <input name="task" type="text" value={task} onChange={handleTaskInput}/>
+        <input name="task" type="text" value={task} onChange={(e) => setTask(e.target.value)}/>
       </label>
       <label>
         Day & Time
-        <input name="day" type="text" value={day} onChange={handleDayInput}/>
+        <input name="day" type="text" value={day} onChange={(e) => setDay(e.target.value)}/>
       </label>
       <label>
         Set reminder
-        <input name="reminder" type="checkbox" checked={reminder} onChange={handleReminderInput}/>
+        <input name="reminder" type="checkbox" checked={reminder} onChange={(e) => setReminder(e.target.checked)}/>
       </label>
       <input type="submit" value="Add Task"></input>
     </form>

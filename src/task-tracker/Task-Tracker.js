@@ -1,12 +1,11 @@
-import React, { useState, createContext } from 'react'
+import React, { useState } from 'react'
 import './Task-Tracker.css'
 import Header from './Header'
 import Form from './Form'
 import Tasks from './Tasks'
 
-const MyContext = createContext();
-
 const TaskTracker = () => {
+  const [form, setForm] = useState(false);
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -28,19 +27,31 @@ const TaskTracker = () => {
     },
   ])
 
+  const addTask = (newTask) => {
+    setTasks([...tasks, newTask]);
+  }
+
   const deleteTask = (id) => {
     setTasks(tasks.filter(task => task.id !== id))
   }
 
-  const addTask = (newTask) => {
-    setTasks([...tasks, newTask]);
-  };
+  const toggleReminder = (id) => {
+    setTasks(tasks.map(task => task.id === id
+      ? {...task, reminder: !task.reminder} : task));
+  }
+
+  const toggleForm = () => {
+    setForm(form => !form)
+  }
 
   return (
     <div className="container">
-      <Header formControl/>
-      <Form addTask={addTask}/>
-      <Tasks tasks={tasks} onDelete={deleteTask}/>
+      <Header form={form} toggleForm={toggleForm}/>
+      {form && <Form addTask={addTask}/>}
+      <Tasks 
+        tasks={tasks} 
+        onDelete={deleteTask} 
+        onToggle={toggleReminder}/>
     </div>
   )
 }
