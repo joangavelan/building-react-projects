@@ -1,11 +1,11 @@
 import React from 'react'
 import './index.css'
-import TaskTracker from './task-tracker/Task-Tracker';
+import TipCalculator from './tip-calculator/Tip-Calculator';
 
 function App() {
   return (
     <div className="App">
-      <TaskTracker />
+      <TipCalculator />
     </div>
   );
 }
