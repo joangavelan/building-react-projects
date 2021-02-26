@@ -28,6 +28,7 @@ form {
   margin-top: 1rem;
 }
 
+.btn,
 input,
 select {
   display: block;
@@ -40,7 +41,7 @@ select {
   border-radius: 3px;
 }
 
-input[type="submit"] {
+.btn, input[type="submit"] {
   margin-top: 1.5rem;
   cursor: pointer;
   padding: 11px;

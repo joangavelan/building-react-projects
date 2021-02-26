@@ -5,17 +5,18 @@ import Results from './Results'
 import './Tip-Calculator.css'
 
 const TipCalculator = () => {
-  const [feedback, setFeedback] = useState('');
   const [results, setResults] = useState(null);
+  const [feedback, setFeedback] = useState('');
 
   const getResults = (bill, share, rate) => {
+
     bill = parseFloat(bill);
     share = parseFloat(share);
     rate = parseFloat(rate);
 
-    const tip = ((bill * rate) / 100); 
+    const tip = (bill * rate) / 100; 
     const total = tip + bill;
-    const each = (total / share);
+    const each = total / share;
 
     const results = {
       tip: tip.toFixed(2),
@@ -26,11 +27,15 @@ const TipCalculator = () => {
     setResults(results);
   }
 
+  const sendFeedback = (bill, share, rate) => {
+
+  }
+
   return (
     <div className="tip-calculator">
       <h1>TIP CALCULATOR</h1>
       {feedback && <Feedback />}
-      <Form getResults={getResults}/>
+      <Form setResults={setResults} getResults={getResults} results={results}/>
       {results && <Results results={results}/>}
     </div>
   )
