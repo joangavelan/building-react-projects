@@ -1,11 +1,11 @@
 import React from 'react'
-import ColorPallete from './Color-Pallete'
 import './index.css'
+import TaskTracker from './task-tracker/Task-Tracker';
 
 function App() {
   return (
     <div className="App">
-      <ColorPallete />
+      <TaskTracker />
     </div>
   );
 }
