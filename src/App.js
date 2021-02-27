@@ -1,11 +1,11 @@
 import React from 'react'
-import Carousel from './carousel-modal/Carousel'
 import './index.css'
+import Quiz from './quiz-app/Quiz';
 
 function App() {
   return (
     <div className="App">
-      <Carousel />
+      <Quiz />
     </div>
   );
 }
