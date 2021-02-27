@@ -1,9 +1,9 @@
 .tip-calculator {
   width: 500px;
-  border: 1px solid black;
+  border: 1px solid rgb(41, 41, 41);
   padding: 30px;
   margin: 5rem auto;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
 h1 {
@@ -13,6 +13,7 @@ h1 {
 
 .feedback {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   background-color: #f8d7da;
   color: #721c24;
