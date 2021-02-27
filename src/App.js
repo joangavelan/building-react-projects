@@ -1,11 +1,11 @@
 import React from 'react'
+import Carousel from './carousel-modal/Carousel'
 import './index.css'
-import TipCalculator from './tip-calculator/Tip-Calculator';
 
 function App() {
   return (
     <div className="App">
-      <TipCalculator />
+      <Carousel />
     </div>
   );
 }
