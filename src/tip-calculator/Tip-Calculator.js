@@ -27,15 +27,40 @@ const TipCalculator = () => {
     setResults(results);
   }
 
-  const sendFeedback = (bill, share, rate) => {
+  const sendFeedback = (emptyInputs) => {
+    if(emptyInputs.length > 1) {
+      setFeedback('Please fill in the fields');
+      return;
+    }
 
+    const emptyInput = emptyInputs[0];
+
+    switch(emptyInput) {
+      case 'bill':
+        setFeedback('Please specify a bill amount');
+        break;
+      case 'share':
+        setFeedback('Please specify how many people will pay the bill');
+        break;
+      case 'rate':
+        setFeedback('You must select a service rate');
+        break;
+      default:
+        setFeedback('Please fill in the fields');
+    }
   }
 
   return (
     <div className="tip-calculator">
       <h1>TIP CALCULATOR</h1>
-      {feedback && <Feedback />}
-      <Form setResults={setResults} getResults={getResults} results={results}/>
+      {feedback && <Feedback feedback={feedback} setFeedback={setFeedback}/>}
+      <Form 
+        setResults={setResults} 
+        getResults={getResults} 
+        results={results}
+        feedback={feedback}
+        sendFeedback={sendFeedback}
+        setFeedback={setFeedback}/>
       {results && <Results results={results}/>}
     </div>
   )

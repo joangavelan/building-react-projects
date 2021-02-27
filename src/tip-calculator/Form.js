@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 
-const Form = ({getResults, results, setResults}) => {
+const Form = ({getResults, results, setResults, sendFeedback, setFeedback, feedback}) => {
   const [bill, setBill] = useState('');
   const [share, setShare] = useState('');
   const [rate, setRate] = useState('');
@@ -18,7 +18,19 @@ const Form = ({getResults, results, setResults}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(!bill || !share || !rate) return;
+
+    const emptyInputs = [];
+    if(!bill) emptyInputs.push('bill')
+    if(!share) emptyInputs.push('share')
+    if(!rate) emptyInputs.push('rate')
+
+    if(emptyInputs.length > 0) {
+      sendFeedback(emptyInputs)
+      return;
+    }
+    
+    if(feedback) setFeedback(null);
+    
     getResults(bill, share, rate);
   }
 
@@ -57,7 +69,7 @@ const Form = ({getResults, results, setResults}) => {
         <input type="submit" value="Calculate"/>}
       {results && 
         <button className="btn" onClick={newCalculation}>
-        New Calculation
+          New Calculation
         </button>}
     </form>
   )
