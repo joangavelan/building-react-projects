@@ -1,4 +1,4 @@
-export default [
+export const questions = [
   {
     id: 1,
     question: "Who's the first president of the United States?",

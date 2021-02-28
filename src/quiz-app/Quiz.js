@@ -1,49 +1,80 @@
 import React, { useState } from 'react'
 import './Quiz.css'
-import questions from './questions' 
-import ProgressBar from './ProgressBar';
+import ProgressBar from './ProgressBar'
+import { questions } from './questions'
 
 const Quiz = () => {
   const [selectedChoice, setSelectedChoice] = useState(null);
   const [score, setScore] = useState(0);
-  // const [quizEnded, setQuizEnded] = useState(false);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [quizEnded, setQuizEnded] = useState(false);
 
-  const quizLength = questions.length;
-  const currentQuestion = questions[currentQuestionIndex];
+  const currentQuestion = questions[currentIndex];
+  const choices = currentQuestion.choices;
+  const lastQuestion = currentIndex === questions.length - 1;
 
   const next = () => {
-    //next question
-    setCurrentQuestionIndex(current => current + 1);
-    //increments score if the user selected the correct answer
+    //increments score if user choice is correct
     if(currentQuestion.answerKey === +selectedChoice) setScore(score => score + 1)
-    // console.log(selectedChoice)
-    console.log(score)
+    //If current question is the last question this trigger will end the quiz
+    if(lastQuestion) {
+      setQuizEnded(true);
+      return;
+    } 
+    //back to null so radio buttons re-render unchecked
+    setSelectedChoice(null);
+    //next question
+    selectedChoice 
+      ? setCurrentIndex(current => current + 1)
+      : alert('Choose your answer');
   }
 
+  const restart = () => {
+    setCurrentIndex(0);
+    setScore(0);
+    setQuizEnded(false);
+    setSelectedChoice(null);
+  }
 
+  const feedback = score > Math.floor(questions.length / 2) ? 'Good Job!' : 'You can do better';
 
   return (
     <div className="quiz">
       {/* question */}
-      <h2>{currentQuestion.question}</h2>
+      <h2>{quizEnded ? feedback : currentQuestion.question}</h2>
       {/* tracker */}
-      <div className="tracker">{currentQuestionIndex + 1} of 5</div>
+      <div className="tracker">
+        {quizEnded 
+          ? `You answered correctly ${score} out of 5 questions`
+          : `${currentIndex + 1} of 5`}
+      </div>
       {/* progress bar */}
-      <ProgressBar current={currentQuestionIndex} length={quizLength}/>
+      <ProgressBar 
+        current={currentIndex} 
+        length={questions.length} 
+        quizEnded={quizEnded}/>
+      {/* tagline */}
+      <div className="tagline">
+        {quizEnded ? 'Completed!' : 'Pick an option below!'}
+      </div>
       {/* choices */}
-      <div className="tagline">Pick an option below!</div>
       <div className="choices">
-        {currentQuestion.choices.map((choice, index) => (
+        {choices.map((choice, index) => (
           <label key={index}>
           {choice}
-          <input type="radio" value={index} onChange={(e) => setSelectedChoice(e.target.value)} name="choice"/> 
+          <input 
+            type="radio" 
+            value={index}
+            checked={selectedChoice === index.toString() ? true : false}
+            onChange={(e) => setSelectedChoice(e.target.value)} 
+            name="choice"
+            disabled={quizEnded ? true : null}/> 
         </label>
         ))}
       </div>
       {/* buttons */}
-      <button onClick={next}>Next</button>
-      <button>Restart</button>
+      {!quizEnded && <button onClick={next}>Next</button>}
+      <button onClick={restart}>Restart</button>
     </div>
   )
 }
