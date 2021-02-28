@@ -61,7 +61,7 @@ const Quiz = () => {
       <div className="choices">
         {choices.map((choice, index) => (
           <label key={index}>
-          {choice}
+            {choice}
           <input 
             type="radio" 
             value={index}
@@ -69,7 +69,7 @@ const Quiz = () => {
             onChange={(e) => setSelectedChoice(e.target.value)} 
             name="choice"
             disabled={quizEnded ? true : null}/> 
-        </label>
+          </label>
         ))}
       </div>
       {/* buttons */}
