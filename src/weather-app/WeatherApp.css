@@ -1,0 +1,26 @@
+.weather-app {
+  margin: 10px;
+  text-align: center;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 2;
+}
+
+form {
+  margin: 1.5rem 0 1rem;
+}
+
+form input {
+  font-size: .9rem;
+  padding: 7px;
+  border: 1px solid #555;
+  outline: none;
+}
+
+form input[type="submit"] {
+  margin-left: -1px;
+  outline: 0;
+  cursor: pointer;
+}
