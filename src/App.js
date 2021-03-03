@@ -1,11 +1,12 @@
 import React from 'react'
 import './index.css'
-import WeatherApp from './weather-app/WeatherApp';
+import './music-player/MusicPlayer.css'
+import MusicPlayer from './music-player/MusicPlayer'
 
 function App() {
   return (
     <div className="App">
-      <WeatherApp />
+      <MusicPlayer />
     </div>
   );
 }

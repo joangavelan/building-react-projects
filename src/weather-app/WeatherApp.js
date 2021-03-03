@@ -65,7 +65,7 @@ const WeatherApp = () => {
         </form>
         {!weather ? 'Loading...'
         : <div>
-            <img src={`http://openweathermap.org/img/wn/${weather.icon}@2x.png`}/>
+            <img src={`http://openweathermap.org/img/wn/${weather.icon}@2x.png`} alt="weather-icon"/>
             <p style={{fontSize: "3rem"}}>{`${weather.temp}°`}</p>
             <p>{`${weather.city + ', ' + weather.country}`}</p>
             <p>{weather.timezone}</p>
