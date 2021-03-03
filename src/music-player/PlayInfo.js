@@ -1,5 +1,3 @@
-import React from 'react'
-
 const PlayInfo = ({songs, isPlaying, togglePlayPause}) => {
   return (
     <div className="player__header">
