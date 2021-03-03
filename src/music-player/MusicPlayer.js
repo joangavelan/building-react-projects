@@ -52,7 +52,9 @@ const MusicPlayer = () => {
       <TrackBar />
       <div className="player">
         <PlayInfo 
-        songs={songsList}/>
+          songs={songsList} 
+          togglePlayPause={togglePlayPause}
+          isPlaying={isPlaying}/>
         <Playlist 
           songs={songsList} 
           currentIndex={currentIndex}

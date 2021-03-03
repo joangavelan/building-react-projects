@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PlayInfo = ({songs}) => {
+const PlayInfo = ({songs, isPlaying, togglePlayPause}) => {
   return (
     <div className="player__header">
       {/* player__thumbnail */}
@@ -13,7 +13,12 @@ const PlayInfo = ({songs}) => {
           <div className="player__count-wrapper">
               <span className="player__count">{songs.length}</span> songs
           </div>
-          <button className="button is-green player__trigger">Play</button>
+          <button 
+            className="button is-green player__trigger"
+            onClick={() => togglePlayPause()}
+            >
+              {isPlaying ? 'Pause' : 'Play'}
+          </button>
       </div>
     </div>
   );
