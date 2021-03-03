@@ -23,7 +23,6 @@ const MusicPlayer = () => {
     } else {
       setCurrentIndex(index);
       updateAudioSrc(index);
-      currentSong.currentTime = 230;
       currentSong.play();
       setIsPlaying(true);
     }
